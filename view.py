@@ -1,3 +1,5 @@
+import datetime
+
 def get_mode() -> int:
     print("\n" + "=" * 20)
     print("Выберите необходимое действие: ")
@@ -51,15 +53,14 @@ def get_salary_range():
     low_salary = input("Введите нижнюю границу: ")
     return [hi_salary, low_salary]
 
-def get_add_new_employee():
+def get_add_new_note():
     print("\n" + "-" * 20)
-    print("Введите данные сотрудника: ")
-    new_employee = []
+    print("Введите Записку: ")
+    new_note = []
     temp = {}
-    temp["last_name"] = input("Введите фамилию: ")
-    temp["first_name"] = input("Введите имя: ")
-    temp["position"] = input("Введите должность: ")
-    temp["phone_number"] = input("Введите телефон: ")
-    temp["salary"] = float(input("Введите деньги: "))
-    new_employee.append(temp)
-    return new_employee
+    temp["id_note"] = "temp"
+    temp["title_note"] = input("Введите заголовок: ")
+    temp["text_note"] = input("Введите текст: ")
+    temp["date_note"] = datetime.datetime.now()
+    new_note.append(temp)
+    return new_note
