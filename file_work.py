@@ -2,15 +2,12 @@ import csv
 import datetime
 
 def get_last_id():
-    with open('database.csv', 'rb') as file:
-        file.seek(-3, 2)
-        last_str = file.readlines()[-1].decode('utf-8')
-        last_id = ''
-        for char in last_str:
-            if char != ',':
-                last_id += char
-            else: break
-    return int(last_id)
+    with open('database.csv', 'r') as file:
+        count_notes = 0
+        csv_reader = csv.reader(file)
+        for row in csv_reader:
+            count_notes += 1           
+    return count_notes
 
 def append_to_csv(last_id, data_new_note):
     notes = read_csv()

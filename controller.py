@@ -3,9 +3,9 @@ import file_work as fw
 
 def start_notes():
     while True:
-        print("Вносим Записку:\n")
         mode = view.get_mode()
         if mode == 1:
+            print("Вносим Записку:\n")
             data_new_note = view.get_add_new_note()
             fw.append_to_csv(fw.get_last_id(), data_new_note)
 
@@ -24,6 +24,6 @@ def start_notes():
             print("Редактируем Записку:\n")
           
         elif mode == 6:
-            print('Всего хорошего!')
+            print('Всего хорошего!\n')
             break             
         print('\nДальше?')
