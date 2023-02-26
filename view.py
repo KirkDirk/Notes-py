@@ -1,7 +1,7 @@
 import datetime
 
 def get_mode() -> int:
-    print("\n" + "=" * 20)
+    print("=" * 20)
     print("Выберите необходимое действие: ")
     print("1. Создать Записку")
     print("2. Вывести список всех Записок")
@@ -11,47 +11,6 @@ def get_mode() -> int:
     print("6. Закончить работу")
     print("=" * 20+ "\n")
     return int(input("Введите номер необходимого действия: "))
-
-def get_search_key():
-    print("\n" + "-" * 20)
-    print("Выберите вид поиска: ")
-    print("1. id")
-    print("2. Фамилия")
-    print("3. Имя")
-    print("4. Должность")
-    print("5. Телефон")
-    print("-" * 20+ "\n")
-    return int(input("Введите вид поиска: "))-1
-
-def get_search_empl(data):
-    search_data = input("Введите " + data + " сотрудника: ")
-    return search_data
-
-def print_to_console_found_empl(found_empl):
-    if found_empl == None: 
-        print("Данные не найдены")
-    else:
-        print(found_empl.values())
-
-def get_search_by_position():
-    search_position = input("Введите искомую должность: ")
-    return search_position
-
-def print_to_console_celection(found_list):
-    if found_list == None: 
-        print("Данные не найдены")
-    else:
-        for i in range(len(found_list)):
-            print(found_list[i])
-    
-def get_search_by_salary():
-    search_salary = input("Введите диапазон зарплат: ")
-    return search_salary
-
-def get_salary_range():
-    hi_salary = input("Введите верхнюю границу: ")
-    low_salary = input("Введите нижнюю границу: ")
-    return [hi_salary, low_salary]
 
 def get_add_new_note():
     print("\n" + "-" * 20)
@@ -64,3 +23,11 @@ def get_add_new_note():
     temp["date_note"] = datetime.datetime.now()
     new_note.append(temp)
     return new_note
+
+def print_to_screen(notes_arr: list):
+    print("\n" + "-" * 20)
+    print("Список записок: \n")
+    print("ID    Title    Text    DateTime\n")
+    for note in notes_arr[:]:
+        print(note[0] + "    " + note[1] + "    " + note[2] + "    " + note[3])
+   
