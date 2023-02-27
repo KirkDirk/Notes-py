@@ -45,5 +45,5 @@ def read_csv_to_arr() -> list:
         for line in csv_converter:
             line_arr = line.split(',')
             notes_arr.append(line_arr)      
-        print(notes_arr) 
+        # print(notes_arr) 
     return notes_arr
