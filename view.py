@@ -28,15 +28,16 @@ def get_add_new_note():
 
 
 def print_to_screen(notes_arr: list):
-    print("\n" + "-" * 20)
-    print("Список записок: \n")
-    print("ID    Title    Text    DateTime\n")
     for note in notes_arr[:]:
-        print(note[0] + "    " + note[1] + "    " + note[2] + "    " + note[3])
+        print("ID    - " + note[0])
+        print("Title - " + note[1])
+        print("Text  - " + note[2])
+        print("Date  - " + note[3])
 
 
 def input_message(prompt) -> str:
     return input(prompt + ": ")
+
 
 def put_message(promt):
     print(promt)

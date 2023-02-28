@@ -12,8 +12,8 @@ def start_notes():
             view.put_message("Записка добавлена")
 
         elif mode == 2:
-            view.put_message("\nВыводим список Записок:\n")
             data_notes = fw.read_csv_to_arr()
+            view.put_message("\nСписок всех записок: \n")
             view.print_to_screen(data_notes)
 
         elif mode == 3:
@@ -36,12 +36,13 @@ def find_note(find_data):
     notes_data = fw.read_csv_to_arr()
     found_list = []
     for line in notes_data:
-        if find_data in line:
-            found_list.append(line)
+        for elem in line:
+            if find_data in elem:
+                found_list.append(line)
+                break
     if found_list > []:
-        for elem in found_list:
-            print(elem, end='')
-            print()
+        view.put_message('\nНайденные записки ():\n')
+        view.print_to_screen(found_list)
     else:
-        print('Искомое не найдено')
+        view.put_message('Искомое не найдено')
     return
