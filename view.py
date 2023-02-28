@@ -15,8 +15,7 @@ def get_mode() -> int:
 
 
 def get_add_new_note():
-    print("\n" + "-" * 20)
-    print("Введите Записку: ")
+    print("Введите данные: ")
     new_note = []
     temp = {}
     temp["id_note"] = "temp"

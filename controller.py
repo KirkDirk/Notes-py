@@ -6,7 +6,7 @@ def start_notes():
     while True:
         mode = view.get_mode()
         if mode == 1:
-            view.put_message("\nВносим Записку:\n")
+            view.put_message("\nВносим Записку:")
             data_new_note = view.get_add_new_note()
             fw.append_to_csv(fw.get_last_id(), data_new_note)
             view.put_message("Записка добавлена")
@@ -25,6 +25,10 @@ def start_notes():
 
         elif mode == 5:
             view.put_message("Редактируем Записку:\n")
+            old_id = view.input_message("Введите ID")
+            new_note = view.get_add_new_note()
+            fw.replacement_note(new_note, old_id)
+            view.put_message("Данные сохранены")
 
         elif mode == 6:
             view.put_message('Всего хорошего!\n')
@@ -46,3 +50,11 @@ def find_note(find_data):
     else:
         view.put_message('Искомое не найдено')
     return
+
+def find_note_by_id(num_id):
+    notes_data = fw.read_csv()
+    found_list = []
+    for note in notes_data:
+        if num_id == note["id"]:
+            found_list.append(note)
+    return found_list

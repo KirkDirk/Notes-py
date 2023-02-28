@@ -1,7 +1,7 @@
 import csv
 import datetime
 
-def get_last_id():
+def get_last_id() -> int:
     with open('database.csv', 'r') as file:
         count_notes = 0
         csv_reader = csv.reader(file)
@@ -45,5 +45,14 @@ def read_csv_to_arr() -> list:
         for line in csv_converter:
             line_arr = line.split(',')
             notes_arr.append(line_arr)      
-        # print(notes_arr) 
     return notes_arr
+
+def replacement_note(new_note, id_note):
+    full_data = read_csv()
+    for note in full_data:
+        if note["id"] == id_note:
+            note["title_note"] = new_note[0]["title_note"]
+            note["text_note"] = new_note[0]["text_note"]
+            note["date_note"] = datetime.datetime.now()
+            break
+    write_csv(full_data)
