@@ -30,7 +30,16 @@ def start_notes():
             fw.replacement_note(new_note, old_id)
             view.put_message("Данные сохранены")
 
-        elif mode == 6:
+        elif mode  == 6:
+            view.put_message("Удаляем Записку:\n")
+            del_id = view.input_message("Введите ID")
+            new_note = find_note_by_id(del_id)
+            new_note[0]["title_note"] = "Note deleted"
+            new_note[0]["text_note"] = "null"
+            fw.replacement_note(new_note, del_id)
+            view.put_message("Данные удалены")
+
+        elif mode == 7:
             view.put_message('Всего хорошего!\n')
             break
         print('\nДальше?\n')
