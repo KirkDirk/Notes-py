@@ -1,3 +1,4 @@
+import datetime
 import view as view
 import file_work as fw
 
@@ -18,7 +19,10 @@ def start_notes():
 
         elif mode == 3:
             view.put_message("\nИщем Записки по датам:")
-
+            start_date = datetime.datetime.strptime(view.input_message("\nВведите начальную дату (дд/мм/гггг )"), "%d/%m/%Y")
+            end_date = datetime.datetime.strptime(view.input_message("\nВведите конечную дату (дд/мм/гггг )"), "%d/%m/%Y")
+            view.put_message("\nНайденные по датам Записки: \n")
+            view.print_to_screen(find_notes_by_dates(start_date, end_date))
 
         elif mode == 4:
             view.put_message("\nИщем Записку и выводим ее на экран:\n")
@@ -61,10 +65,20 @@ def find_note(find_data):
         view.put_message('Искомое не найдено')
     return
 
-def find_note_by_id(num_id):
+def find_note_by_id(num_id) -> list:
     notes_data = fw.read_csv()
     found_list = []
     for note in notes_data:
         if num_id == note["id"]:
+            found_list.append(note)
+    return found_list
+
+
+def find_notes_by_dates(date1, date2) -> list:
+    notes_data = fw.read_csv()
+    found_list = []
+    for note in notes_data:
+        date_note = datetime.datetime.strptime(note["date_note"], '%Y-%m-%d %H:%M:%S.%f')
+        if (date1 < date_note < date2):
             found_list.append(note)
     return found_list
