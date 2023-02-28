@@ -28,11 +28,13 @@ def get_add_new_note():
 
 
 def print_to_screen(notes_arr: list):
-    for note in notes_arr[:]:
-        print("ID    - " + note[0])
-        print("Title - " + note[1])
-        print("Text  - " + note[2])
-        print("Date  - " + note[3])
+    sorted_notes_arr = sorted(notes_arr, key=lambda x: x["date_note"], reverse = True)
+    for note in sorted_notes_arr[:]:
+        print("ID    - " + note["id"])
+        print("Title - " + note["title_note"])
+        print("Text  - " + note["text_note"])
+        print("Date  - " + note["date_note"])
+        print()
 
 
 def input_message(prompt) -> str:

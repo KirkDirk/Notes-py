@@ -12,12 +12,13 @@ def start_notes():
             view.put_message("Записка добавлена")
 
         elif mode == 2:
-            data_notes = fw.read_csv_to_arr()
+            data_notes = fw.read_csv()
             view.put_message("\nСписок всех записок: \n")
             view.print_to_screen(data_notes)
 
         elif mode == 3:
             view.put_message("\nИщем Записки по датам:")
+
 
         elif mode == 4:
             view.put_message("\nИщем Записку и выводим ее на экран:\n")
